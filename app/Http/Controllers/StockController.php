@@ -10,12 +10,12 @@ class StockController extends Controller
 {
     public function create( Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'name' =>'required|max:255',
-        //     'quantity' =>'required',
-        //     'price' =>'required',
-        //     'category' =>'required',
-        // ]);
+        $validatedData = $request->validate([
+            'name' =>'required|max:255',
+            'quantity' =>'required',
+            'price' =>'required',
+            'category' =>'required',
+        ]);
 
         $inventory = new Stock();
 
@@ -43,16 +43,15 @@ class StockController extends Controller
 
     public function updatebyId(request $request, $id)
     {
-        // $validatedData = $request->validate([
-        //     'name' =>'required|max:255',
-        //     'quantity' =>'required',
-        //     'price' =>'required',
-        //     'category' =>'required',
-    
-        // ]);
-    
         $inventory = stock::find($id);
-
+        $validatedData = $request->validate([
+            'name' =>'required|max:255',
+            'quantity' =>'required',
+            'price' =>'required',
+            'category' =>'required',
+    
+        ]);
+    
         $inventory->name =$request->input('name');
         $inventory->quantity =$request->input('quantity');
         $inventory->price =$request->input('price');
